@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+        <display-name>My app</display-name>
+        <display-description>My app description</display-description>
+        <distributable/>
+
+        <context-param>
+        <param-name>name</param-name>
+        <param-value>myapp</param-value>
+        </context-param>
+        <context-param>
+        <param-name>app_properties</param-name>
+        <param-value>/mycompanyapps/GLOBAL_RESOURCES/config/applicationname/applicationname.properties</param-value>
+        </context-param>
+
+        <servlet>
+        <servlet-name>invoker</servlet-name>
+        <servlet-class>
+                org.apache.catalina.servlets.InvokerServlet
+        </servlet-class>
+        <init-param>
+                <param-name>debug</param-name>
+                <param-value>1</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+        <!-- CallStart Servlet -->
+        <servlet>
+            <servlet-name>callstart</servlet-name>
+                <servlet-class>com.mycompany.gvpdriver.callstart.CallStart</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+        <!-- End of CallStart Servlet -->
+
+        <!-- CallEnd Servlet -->
+        <servlet>
+            <servlet-name>callend</servlet-name>
+                <servlet-class>com.mycompany.gvpdriver.callend.CallEnd</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+        <!-- End of CallEnd Servlet -->
+        <!-- Application Root Servlet -->
+        <servlet>
+            <servlet-name>ROOT</servlet-name>
+                <servlet-class>com.mycompany.gvpdriver.base.ROOT</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+        <!-- End of Application Root Servlet -->
+        <!-- Check In Servlet -->
+        <servlet>
+            <servlet-name>checkin</servlet-name>
+                <servlet-class>com.mycompany.phoenix.driver.dispatcher.Dispatcher</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+        <!-- End of Check In Servlet -->
+        <servlet>
+            <servlet-name>dnis</servlet-name>
+                <servlet-class>com.mycompany.phoenix.dnis.DNIS</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+        <servlet>
+            <servlet-name>language</servlet-name>
+                <servlet-class>com.mycompany.phoenix.language.CheckIn</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+                <servlet>
+                <servlet-name>info</servlet-name>
+                <servlet-class>com.mycompany.phoenix.info.CheckIn</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+        <servlet>
+            <servlet-name>menu</servlet-name>
+                <servlet-class>com.mycompany.phoenix.menu.CheckIn</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+        <servlet>
+            <servlet-name>npanxx</servlet-name>
+                <servlet-class>com.mycompany.phoenix.npanxx.NPANXX</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+        <servlet>
+            <servlet-name>simplemessage</servlet-name>
+                <servlet-class>com.mycompany.phoenix.simplemessage.CheckIn</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+        <servlet>
+            <servlet-name>tod</servlet-name>
+                <servlet-class>com.mycompany.phoenix.tod.TOD</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+        <servlet>
+            <servlet-name>transfer</servlet-name>
+                <servlet-class>com.mycompany.phoenix.transfer.CheckIn</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+
+        <!-- SERVLET MAPPINGS -->
+    <servlet-mapping>
+         <servlet-name>invoker</servlet-name>
+         <url-pattern>/servlet/*</url-pattern>
+        </servlet-mapping>
+
+        <servlet-mapping>
+                <servlet-name>callstart</servlet-name>
+                <url-pattern>/callstart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+                <servlet-name>callend</servlet-name>
+                <url-pattern>/callend</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+                <servlet-name>PHOENIX</servlet-name>
+                <url-pattern>/PHOENIX</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+                <servlet-name>checkin</servlet-name>
+                <url-pattern>/checkin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+                <servlet-name>dnis</servlet-name>
+                <url-pattern>/dnis</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+                <servlet-name>language</servlet-name>
+                <url-pattern>/language</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+                <servlet-name>menu</servlet-name>
+                <url-pattern>/menu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+                <servlet-name>npanxx</servlet-name>
+                <url-pattern>/npanxx</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+                <servlet-name>simplemessage</servlet-name>
+                <url-pattern>/simplemessage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+                <servlet-name>tod</servlet-name>
+                <url-pattern>/tod</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+                <servlet-name>transfer</servlet-name>
+                <url-pattern>/transfer</url-pattern>
+    </servlet-mapping>
+
+        <!--MIME MAPPINGS-->
+        <mime-mapping>
+                <extension>ulaw</extension>
+                <mime-type>audio/basic</mime-type>
+        </mime-mapping>
+
+        <mime-mapping>
+                <extension>xml</extension>
+                <mime-type>text/xml</mime-type>
+        </mime-mapping>
+
+        <mime-mapping>
+                <extension>vxml</extension>
+                <mime-type>text/xml</mime-type>
+        </mime-mapping>
+
+        <mime-mapping>
+                <extension>gram</extension>
+                <mime-type>text/plain</mime-type>
+        </mime-mapping>
+
+        <mime-mapping>
+                <extension>vox</extension>
+                <mime-type>audio/x-vox</mime-type>
+        </mime-mapping>
+
+        <mime-mapping>
+                <extension>grxml</extension>
+                <mime-type>application/srgs+xml</mime-type>
+        </mime-mapping>
+</web-app>
